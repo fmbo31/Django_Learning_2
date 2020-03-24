@@ -19,5 +19,6 @@ from tours.views import MainView, DepartureView
 
 urlpatterns = [
     path('',MainView.as_view()),
+    path('/departure/',DepartureView.as_view()),
     path('/departure/<str:departure>',DepartureView.as_view())
 ]

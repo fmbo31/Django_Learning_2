@@ -146,5 +146,5 @@ class MainView(View):
         return render(request, 'tours/index.html', context={'departures': departures, 'tours': tours})
 
 class DepartureView(View):
-    def get(self, request, departure="msk",  *args, **kwargs):
+    def get(self, request, departure,  *args, **kwargs):
         return render(request, 'tours/departure.html', context={'departures': departures, 'tours': tours})
