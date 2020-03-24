@@ -145,7 +145,7 @@ tours = {
 class MainView(View):
     def get(self, request, *args, **kwargs):
         return render(
-            request, 'movies/index.html', context={
+            request, 'tours/index.html', context={
                 'director': settings.DIRECTOR,
                 'movies': movies,
             }
