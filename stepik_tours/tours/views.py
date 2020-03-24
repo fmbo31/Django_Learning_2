@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse
 
 title = "Stepik Travel"
 subtitle = "Для тех, кого отвлекают дома"
@@ -144,5 +143,8 @@ tours = {
 
 class MainView(View):
     def get(self, request, *args, **kwargs):
+        return render(request, 'tours/index.html', context={'departures': departures, 'tours': tours})
 
-        return render(request, 'tours/index.html', context={'tours': tours})
+class DepartureView(View):
+    def get(self, request, departure="msk",  *args, **kwargs):
+        return render(request, 'tours/departure.html', context={'departures': departures, 'tours': tours})

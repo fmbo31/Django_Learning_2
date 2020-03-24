@@ -16,21 +16,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav" data-test="navigation">
-          <li class="nav-item active">
-            <a class="nav-link" href="#" data-test="navlink">Из Москвы </a>
+           {% for key,value  in departures.items %}
+            <li class="nav-item active">
+            <a class="nav-link" href={{key}}>{{value}}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-test="navlink">Из Петербурга</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-test="navlink">Из Новосибирска</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-test="navlink">Из Екатеринбурга</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-test="navlink">Из Казани</a>
-          </li>
+        {%endfor%}
         </ul>
       </div>
     </nav>
@@ -46,10 +36,10 @@
     <!-- CARDS -->
 
     <div class="row mt-5" data-test="cards">
-        {% for tour in tours %}
+        {% for tour  in tours.values %}
         <div class="col-4" data-test="card">
             <div class="card mb-3" >
-            <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" data-test="picture">
+            <img src={{tour.picture}} class="card-img-top img-fluid" data-test="picture">
             <div class="card-body">
               <h5 class="card-title">{{tour.title}}</h5>
              <p class="card-text">{{tour.description}}.</p>
