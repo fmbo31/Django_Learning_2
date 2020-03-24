@@ -144,8 +144,5 @@ tours = {
 
 class MainView(View):
     def get(self, request, *args, **kwargs):
-        context={
-            'tours': movies,
-        }
-        return render(
-            request, 'tours/index.html', context)
+
+        return render(request, 'tours/index.html', context={'tours': tours})
