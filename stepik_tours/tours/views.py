@@ -1,11 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .data import tours
-
-title = "Stepik Travel"
-subtitle = "Для тех, кого отвлекают дома"
-description = "Лучшие направления, где никто не будет вам мешать сидеть на берегу и изучать программирование, дизайн, разработку игр и управление продуктами"
-departures = {"msk":"Из Москвы","spb":"Из Петербурга","nsk":"Из Новосибирска","ekb":"Из Екатеринбурга","kazan":"Из Казани"}
+from .data import tours, description, subtitle, title, departures
 
 class MainView(View):
     def get(self, request, *args, **kwargs):
