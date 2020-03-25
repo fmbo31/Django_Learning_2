@@ -148,12 +148,12 @@ class MainView(View):
         return render(request, 'tours/index.html', context={'departures': departures, 'tours': tours})
 
 class DepartureView(View):
-    def count_props(self, departure="msk"):
-        min_price=0
-        max_price=0
-        min_stay=0
-        max_stay=0
-        for tour in tours:
+    def count_props(self, departure="kzn"):
+        min_price=tours[1]["price"]
+        max_price=tours[1]["price"]
+        min_stay=tours[1]["nights"]
+        max_stay=tours[1]["nights"]
+        for tour in tours.values():
             if tour["departure"] == departure:
                 if tour["price"] < min_price:
                     min_price=tour["price"]
