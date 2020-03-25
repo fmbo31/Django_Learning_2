@@ -153,17 +153,17 @@ class DepartureView(View):
         max_price=tours[1]["price"]
         min_stay=tours[1]["nights"]
         max_stay=tours[1]["nights"]
-        for tour in tours.values():
-            if tour["departure"] == departure:
-                if tour["price"] < min_price:
-                    min_price=tour["price"]
-                elif tour["price"] > max_price:
-                    max_price = tour["price"]
-            if tour["departure"] == departure:
-                if tour["nights"] < min_stay:
-                    min_stay=tour["nights"]
-                elif tour["nights"] > max_stay:
-                    max_stay = tour["nights"]
+        for tour in tours:
+            if tours[tour]["departure"] == departure:
+                if tours[tour]["price"] < min_price:
+                    min_price=tours[tour]["price"]
+                elif tours[tour]["price"] > max_price:
+                    max_price = tours[tour]["price"]
+            if tours[tour]["departure"] == departure:
+                if tours[tour]["nights"] < min_stay:
+                    min_stay=tours[tour]["nights"]
+                elif tours[tour]["nights"] > max_stay:
+                    max_stay = tours[tour]["nights"]
         return {"min_price": min_price, "max_price": max_price, "min_stay": min_stay, "max_stay": max_stay}
     def get(self, request, departure="msk",  *args, **kwargs):
         return render(request, 'tours/departure.html', context={
