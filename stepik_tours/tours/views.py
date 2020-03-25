@@ -139,6 +139,8 @@ tours = {
 		"nights":12,
 		"date": "17 февраля",
     },
+
+
 }
 
 class MainView(View):
@@ -146,5 +148,27 @@ class MainView(View):
         return render(request, 'tours/index.html', context={'departures': departures, 'tours': tours})
 
 class DepartureView(View):
-    def get(self, request, departure,  *args, **kwargs):
-        return render(request, 'tours/departure.html', context={'departures': departures, 'tours': tours})
+    def count_props(self, departure="msk"):
+        min_price=0
+        max_price=0
+        min_stay=0
+        max_stay=0
+        for tour in tours:
+            if tour["departure"] == departure:
+                if tour["price"] < min_price:
+                    min_price=tour["price"]
+                elif tour["price"] > max_price:
+                    max_price = tour["price"]
+            if tour["departure"] == departure:
+                if tour["nights"] < min_stay:
+                    min_stay=tour["nights"]
+                elif tour["nights"] > max_stay:
+                    max_stay = tour["nights"]
+        return {"min_price": min_price, "max_price": max_price, "min_stay": min_stay, "max_stay": max_stay}
+    def get(self, request, departure="msk",  *args, **kwargs):
+        return render(request, 'tours/departure.html', context={
+                                                                    'destination': departures[departure],
+                                                                    'departures': departures,
+                                                                    'tours': tours,
+                                                                    'properties': self.count_props()
+        })
